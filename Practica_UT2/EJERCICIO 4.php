@@ -1,23 +1,40 @@
 <?php
+$version=phpversion();
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-echo "<h1>Diagnóstico del Entorno PHP</h1>";
+
+$displayErrorsvisu = ini_get('display_errors');
+
+$metodoHttp = $_SERVER['REQUEST_METHOD'] ;
+
+$uriSolicitada = $_SERVER['REQUEST_URI'] ;
 
 
-echo "<p><strong>Versión de PHP:</strong> " . phpversion() . "</p>";
+//prueba de pequeño error con una variable sin asignar
+//Solucion: Asignar la variable.
+//$Error="No hay Error";
+echo $Error;
 
+?>
 
-$displayErrorsStatus = ini_get('display_errors');
-echo "<p><strong>Configuración display_errors:</strong> " . ($displayErrorsStatus ? 'Activado (1)' : 'Desactivado (0)') . "</p>";
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 
+<h1>Diagnóstico del Entorno PHP</h1>
+<p>Versión de PHP: <?=$version?> </p>
+<p>display_errors: <?=$displayErrorsvisu?></p>
+<p>Método HTTP: <?=$metodoHttp?></p>
+<p>URI Solicitada: <?=$uriSolicitada?></p>
+<p>Mensaje Error: <?=$Error?></p>
 
-$metodoHttp = $_SERVER['REQUEST_METHOD'] ?? 'Desconocido';
-echo "<p><strong>Método HTTP:</strong> " . htmlspecialchars($metodoHttp) . "</p>";
-
-
-$uriSolicitada = $_SERVER['REQUEST_URI'] ?? 'Desconocida';
-echo "<p><strong>URI Solicitada:</strong> " . htmlspecialchars($uriSolicitada) . "</p>";
-
-echo "<h2>Prueba de errores:</h2>";
-
-echo $variableNoDefinida;
+</body>
+</html>
