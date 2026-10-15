@@ -7,6 +7,9 @@ $Inscripcionesactuales=87;
 $Eventoabierto=true;
 
 $plazas = $Aforomáximo - $Inscripcionesactuales;
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,5 +33,21 @@ $plazas = $Aforomáximo - $Inscripcionesactuales;
     Plazas restantes: <?=$plazas?>
     <br>
 </p>
+
+<!--
+qué función tiene Composer en el proyecto??
+Gestor de dependencias del proyecto.
+
+si sería posible ejecutar esta página sin Composer??
+Si
+
+qué parte se ejecuta en servidor y qué parte recibe el navegador??
+En servidor se ejecuta la operación y las declaraciones de las variables
+y el navegador recibe el HTML indicando en la pantalla siguiendo nuestro diseño.
+-->
+
 </body>
 </html>
+
+
+
