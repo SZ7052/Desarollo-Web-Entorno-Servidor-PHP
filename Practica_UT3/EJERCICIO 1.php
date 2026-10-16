@@ -37,6 +37,11 @@ $juegos = [
     ]
 ];
 
+    foreach ($juegos as $juego) {
+
+
+    }
+
 
 
 ?>
