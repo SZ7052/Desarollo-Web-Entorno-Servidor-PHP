@@ -36,15 +36,23 @@ $juegos = [
         "stock" => 0
     ]
 ];
+$Totaljuegos=count($juegos);
+$suma=0;
+foreach ($juegos as $juego) {
+    $suma += $juego["precio"];
+}
+$Media = $suma / $Totaljuegos;
 
-    foreach ($juegos as $juego) {
+/*
+1. ¿Por qué foreach es una buena elección para este problema?
 
+2. ¿Qué ocurriría si todos los juegos tuviesen stock 0?
 
-    }
+3. ¿Qué variables has necesitado para calcular la media?
 
-
-
+*/
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,8 +64,8 @@ $juegos = [
     <style>
         /* Contenedor principal que forma la rejilla */
         .grid-posts {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Crea 2 columnas iguales */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Crea 2 columnas iguales */
             gap: 20px; /* Espacio de separación entre las tarjetas */
             max-width: 800px;
             margin: 20px auto;
@@ -65,7 +73,7 @@ $juegos = [
 
         /* Estilo individual de cada tarjeta (cada "post") */
         .tarjeta-post {
-            background-color: #ffffff;
+    background-color: #ffffff;
             border: 1px solid #dbdbdb; /* Borde gris suave estilo red social */
             border-radius: 12px;       /* Esquinas redondeadas como en tu dibujo */
             padding: 20px;
@@ -73,41 +81,37 @@ $juegos = [
         }
 
         .tarjeta-post h3 {
-            margin-top: 0;
+    margin-top: 0;
             color: #262626;
         }
     </style>
 </head>
 <body>
 
-<!-- Cuadrícula con 4 tarjetas de ejemplo -->
+
 <div class="grid-posts">
+    <?php foreach ($juegos as $juego) : ?>
 
     <div class="tarjeta-post">
-        <h3>GOTYland - Edición Estándar</h3>
-        <p>Precio : 20.26 €</p>
-        <p>Descuento : 20%</p>
+        <h3><?=$juego['titulo']?></h3>
+        <p>Genero: <?=$juego['genero']?></p>
+        <p>Precio: <?=$juego['precio']?></p>
+        <p>Pegi: <?=$juego['pegi'] ?></p>
+        <p>Stock: <?=$juego['stock'] ?></p>
+        <?php if ($juego['precio'] > 40):?>
+                <p>«Premium»</p>
+        <?php else:?>
+                <p>«Estándar»</p>
+        <?php endif;?>
+
     </div>
 
-    <div class="tarjeta-post">
-        <h3>GOTYland - Expansión</h3>
-        <p>Precio : 15.00 €</p>
-        <p>Descuento : 10%</p>
-    </div>
+    <?php endforeach; ?>
+    <p>Total de juegos: <?=$Totaljuegos?></p>
 
-    <div class="tarjeta-post">
-        <h3>GOTYland - Pase VIP</h3>
-        <p>Precio : 10.00 €</p>
-        <p>Descuento : 50%</p>
-    </div>
-
-    <div class="tarjeta-post">
-        <h3>GOTYland - Bundle Completo</h3>
-        <p>Precio : 35.00 €</p>
-        <p>Descuento : 30%</p>
-    </div>
-
+    <p>Precio Medio: <?=$Media?></p>
 </div>
+
 
 </body>
 </html>
