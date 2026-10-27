@@ -9,7 +9,9 @@ $peliculas = [
     ["titulo" => "Whiplash", "genero" => "Drama", "anio" => 2014, "duracion" => 106]
 ];
 
-if ($resultados > 0) {
+$genero = $_GET["genero"];
+$duracion = $_GET["duracion"];
+
 function esCompatible(
     array $pelicula,
     string $genero,
@@ -18,8 +20,8 @@ function esCompatible(
     return
         $genero === $pelicula["genero"] && $duracion <= $pelicula["duracion"];
 }
-$genero="";
-$duracion=0;
+
+
 $resultados = [];
 foreach ($peliculas as $pelicula) {
     if(esCompatible($pelicula,$genero,$duracion)){
@@ -27,8 +29,8 @@ foreach ($peliculas as $pelicula) {
     }
 }
 
+echo
 
-}
 
 
 
