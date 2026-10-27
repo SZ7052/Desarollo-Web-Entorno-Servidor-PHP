@@ -3,11 +3,8 @@
 
 $nombre ="";
 $email = "";
-$edad = "";
-$juego_principal = "";
-$nivel = "";
-$aceptacion_de_normas="";
-
+$edad = 0;
+$aceptacion_de_normas=false;
 
 $juegosPermitidos = [
     "Catan",
@@ -21,6 +18,14 @@ $nivelesPermitidos = [
     "intermedio",
     "avanzado"
 ];
+
+
+
+
+
+
+
+
 
 ?>
 
@@ -44,6 +49,7 @@ $nivelesPermitidos = [
            name="nombre"
            minlength="3" required>
     </div>
+
     <div>
     <label for="email">
         Email:
@@ -54,51 +60,50 @@ $nivelesPermitidos = [
            name="email"
            min="1" required>
     </div>
+
     <div>
-    <label for="duracion">
-        Duración máxima
+    <label for="edad">
+        Edad:
     </label>
     <input type="number"
-           id="duracion"
-           name="duracion"
+           id="edad"
+           name="edad"
            min="1" required>
     </div>
     <div>
-    <label for="duracion">
-        Duración máxima
+    <label for="juego">
+        Juegos:
     </label>
-    <input type="number"
-           id="duracion"
-           name="duracion"
-           min="1" required>
+    <select id="juego" name="juego">
+        <option>--Selecciona una--</option>
+        <option>"Catan"</option>
+        <option>"Carcassonne"</option>
+        <option>"Dune: Imperium"</option>
+        <option> "Terraforming Mars"</option>
+    </select>
     </div>
     <div>
-    <label for="duracion">
-        Duración máxima
+    <label for="niveles">
+        Niveles:
     </label>
-    <input type="number"
-           id="duracion"
-           name="duracion"
-           min="1" required>
+        <select id="juego" name="juego">
+            <option>--Selecciona una--</option>
+            <option>"principiante"</option>
+            <option>"intermedio"</option>
+            <option>"avanzado"</option>
+        </select>
     </div>
     <div>
-    <label for="duracion">
-        Duración máxima
+    <label for="acepta">
+            Aceptación de normas:
     </label>
-    <input type="number"
-           id="duracion"
-           name="duracion"
-           min="1" required>
+    <input type="checkbox"
+           id="acepta"
+           name="acepta"
+           value="1">
     </div>
-    <div>
-    <label for="duracion">
-        Duración máxima
-    </label>
-    <input type="number"
-           id="duracion"
-           name="duracion"
-           min="1" required>
-    </div>
+
+
 
     <button type="submit" >Enviar</button>
 

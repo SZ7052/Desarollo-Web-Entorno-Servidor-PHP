@@ -9,8 +9,8 @@ $peliculas = [
     ["titulo" => "Whiplash", "genero" => "Drama", "anio" => 2014, "duracion" => 106]
 ];
 
-$genero = $_GET["genero"];
-$duracion = $_GET["duracion"];
+$genero = $_GET["genero"]??"";
+$duracion = $_GET["duracion"]??"";
 
 function esCompatible(
     array $pelicula,
@@ -21,18 +21,32 @@ function esCompatible(
         $genero === $pelicula["genero"] && $duracion <= $pelicula["duracion"];
 }
 
-
 $resultados = [];
-foreach ($peliculas as $pelicula) {
-    if(esCompatible($pelicula,$genero,$duracion)){
-        $resultados[] = $pelicula;
+$error=null;
+$busquedarealizada = isset($_GET["genero"],$_GET["duracion"]);
+
+$duracion = filter_input (INPUT_GET, "duracion",FILTER_VALIDATE_INT);
+
+if ($busquedarealizada) {
+    $genero = trim($_GET["genero"]??"");
+
+    if (!$duracion || $duracion <=0 ) {
+        $error = "La duracion no es valida";
+    } else {
+
+        foreach ($peliculas as $pelicula) {
+            if (esCompatible($pelicula, $genero, $duracion)) {
+                $resultados[] = $pelicula;
+            }
+        }
     }
 }
 
-echo
 
 
-
+/*1. ¿Por qué GET es más apropiado que POST para este caso?
+2. ¿Qué ventaja tiene que la consulta aparezca en la URL?
+3. ¿Qué información procedente del cliente estás validando?*/
 
 
 ?>
@@ -48,12 +62,13 @@ echo
 </head>
 <body>
 <form method="get">
-    <label for="Genero">
+    <label for="genero">
         Genero
     </label>
     <input type="text"
-           id="Genero"
-           name="Genero"
+           id="genero"
+           name="genero"
+           value="<?= htmlspecialchars($genero ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"
             required>
     <label for="duracion">
         duracion
@@ -61,9 +76,29 @@ echo
     <input type="number"
            id="duracion"
            name="duracion"
+           value="<?= $duracionInput ?? '' ?>"
            min="1" required>
     <button type="submit">Buscar</button>
 
+    <?php if ($error): ?>
+        <p ><?= htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></p>
+    <?php elseif ($busquedarealizada): ?>
+        <h3>Resultados</h3>
+        <?php if (!empty($resultados)): ?>
+            <ul>
+                <?php foreach ($resultados as $p): ?>
+                    <li>
+                        <?= htmlspecialchars($p['titulo'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                        (<?= $p['anio'] ?>)
+                        - Género: <?= htmlspecialchars($p['genero'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>,
+                        Duración: <?= $p['duracion'] ?> min
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>No se encontraron películas</p>
+        <?php endif; ?>
+    <?php endif; ?>
 
 </form>
 
