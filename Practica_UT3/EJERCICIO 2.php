@@ -15,8 +15,8 @@ $componentes = [
 function calcularSubtotal(array $compo):float{
     $longitud=count($compo);
     $Suma = 0;
-   foreach ($compo as $comp) {
-       $Suma += $comp;
+   foreach ($compo as $precio) {
+       $Suma += $precio;
    }
     return $Suma;
 }
@@ -24,18 +24,10 @@ function calcularSubtotal(array $compo):float{
 //echo calcularSubtotal($componentes);
 
 function calcularCosteMontaje(array $compo):float{
-    $CosteMontaje = 0;
-    $PrecioMontaje = 49.99;
-
 if (calcularSubtotal($compo) > 1000 ) {
-    $CosteMontaje  = calcularSubtotal($compo);
-
-}else{
-    $CosteMontaje=calcularSubtotal($compo)+$PrecioMontaje;
-
+    return 0;
 }
-    return $CosteMontaje;
-
+    return 49.99;
 }
 
 //echo calcularCosteMontaje($componentes);
@@ -82,6 +74,7 @@ Ninguna
     <title>Document</title>
 </head>
 <body>
+
 
 
 
