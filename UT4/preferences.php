@@ -2,7 +2,7 @@
 require_once __DIR__ . '/includes/bootstrap.php';
 $allowedTheme=['light', 'dark'];
 $error=null;
-
+$theme=$_COOKIE["theme"]??"light";
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     $theme=$_POST["theme"]??'';
     if(!in_array($theme, $allowedTheme)) {
@@ -15,6 +15,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         "httponly" => true,
         "samesite" => "Lax",
     ]);
+    }
+    $theme=$_COOKIE["theme"]??"light";
+    if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
+        $theme="light";
     }
 }
 
@@ -30,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="assets/styles.css">
 
 </head>
-<body>
+<body class="bg-<?= e($theme) ?>">
     <main>
         <section>
             <h1>
@@ -49,6 +53,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                 <button type="submit">Guardar preferencias</button>
             </form>
         </section>
+        <a class="button" href="index.php">Ir a Home</a>
     </main>
 </body>
 </html>

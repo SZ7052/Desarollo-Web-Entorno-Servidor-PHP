@@ -1,6 +1,9 @@
 <?php
     require_once __DIR__ . '/includes/bootstrap.php';
     $theme=$_COOKIE["theme"]??"light";
+    if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
+        $theme="light";
+    }
 ?>
 
 <!doctype html>
@@ -24,6 +27,7 @@
             Tienda para aficionados a los juegos de mesa
         </p>
     </section>
+    <a class="button" href="preferences.php">Ir a preferencias</a>
 </main>
 
 </body>
