@@ -18,7 +18,7 @@ function esCompatible(
     int $duracion
 ):bool{
     return
-        $genero === $pelicula["genero"] && $duracion <= $pelicula["duracion"];
+        $genero === $pelicula["genero"] && $duracion >= $pelicula["duracion"];
 }
 
 $resultados = [];
@@ -44,9 +44,18 @@ if ($busquedarealizada) {
 
 
 
-/*1. ¿Por qué GET es más apropiado que POST para este caso?
+/*
+1. ¿Por qué GET es más apropiado que POST para este caso?
+Porque se esta haciendo una busqueda de los datos que tenemos ,
+aparece informacion para el usuario en la URL y no modifica nada.
+
 2. ¿Qué ventaja tiene que la consulta aparezca en la URL?
-3. ¿Qué información procedente del cliente estás validando?*/
+Permite que los usuarios puedan usarlos a su gusto ya sea compartir el enlace u otros usos .
+
+3. ¿Qué información procedente del cliente estás validando?
+Validando el genero y duración que han introducido en el navegador.
+
+*/
 
 
 ?>
@@ -76,7 +85,7 @@ if ($busquedarealizada) {
     <input type="number"
            id="duracion"
            name="duracion"
-           value="<?= $duracionInput ?? '' ?>"
+           value="<?= $duracion ?? '' ?>"
            min="1" required>
     <button type="submit">Buscar</button>
 

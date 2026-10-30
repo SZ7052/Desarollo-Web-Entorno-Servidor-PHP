@@ -43,6 +43,9 @@ function validarEmail(string $email):?string{
     if($email === ""){
         return "Email es requerido";
     }
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+        return "Email no válido";
+    }
     return null;
 }
 $errorEmail=validarEmail($email);

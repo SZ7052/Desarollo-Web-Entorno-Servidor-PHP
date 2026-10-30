@@ -32,9 +32,9 @@ if (calcularSubtotal($compo) > 1000 ) {
 //echo calcularCosteMontaje($componentes);
 
 function calcularDescuento(array $compo):float{
-    $calculodesc=(100-5)/100;
+
     if(calcularSubtotal($compo) >1200) {
-        return (calcularSubtotal($compo)*$calculodesc)*(21/100);
+        return calcularSubtotal($compo)*0.05;
     }
     return 0;
 }
