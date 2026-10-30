@@ -63,11 +63,11 @@ $Totalfinal=round(calcularTotal($componentes),2);
 /*
 
 1. ¿Qué ventaja aporta que las funciones devuelvan valores en vez de realizar echo?
-
+La ventaja es que podemos usarlo en otras partes del programa o codigo.Guardandolo en una variable u otros usos .
 2. ¿Qué responsabilidades has separado?
-
+En este caso en las funciones de : subtotal,costemontaje,descuento y precio final.
 3. Si mañana cambia el precio del montaje, ¿qué parte del programa tendrías que modificar?
-Ninguna
+Ninguna,porque con las funciones esta todo preparado en caso de otros precios
 */
 
 ?>

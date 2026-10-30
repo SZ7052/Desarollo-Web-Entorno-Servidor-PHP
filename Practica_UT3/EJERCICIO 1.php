@@ -45,11 +45,13 @@ $Media = $suma / $Totaljuegos;
 
 /*
 1. ¿Por qué foreach es una buena elección para este problema?
-
+Porque nos permite mostrar todo el contenido que hay en la array sin
+tener que mostrar la informacion a mano con las posiciones.
 2. ¿Qué ocurriría si todos los juegos tuviesen stock 0?
+No pasa nada , el progrmaa/calculo seguira funcionando porque no tiene que ver con el stock.
 
 3. ¿Qué variables has necesitado para calcular la media?
-
+He usado 3 : suma , media y totaljuegos .
 */
 ?>
 
