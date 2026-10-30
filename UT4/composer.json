@@ -1,0 +1,12 @@
+{
+  "name": "alumno/meepleshop",
+  "description": "Aplicacion de UT4",
+  "version": "0.1.0",
+  "type": "project",
+  "require": {
+    "php": "^8.5"
+  },
+  "scripts": {
+    "serve": "php -S localhost:8000"
+  }
+}
