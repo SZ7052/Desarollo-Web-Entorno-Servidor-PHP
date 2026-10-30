@@ -13,7 +13,6 @@ $componentes = [
 
 
 function calcularSubtotal(array $compo):float{
-    $longitud=count($compo);
     $Suma = 0;
    foreach ($compo as $precio) {
        $Suma += $precio;
@@ -34,21 +33,30 @@ if (calcularSubtotal($compo) > 1000 ) {
 
 function calcularDescuento(array $compo):float{
     $calculodesc=(100-5)/100;
-    $PrecioDescuento = 0;
     if(calcularSubtotal($compo) >1200) {
-        $PrecioDescuento = (calcularSubtotal($compo)*$calculodesc)*(21/100);
-    }else{
-        $PrecioDescuento=calcularSubtotal($compo) * ((21+100)/100);
+        return (calcularSubtotal($compo)*$calculodesc)*(21/100);
     }
-    return $PrecioDescuento;
+    return 0;
 }
 
 //echo calcularDescuento($componentes);
-function calcularTotal(array $compo):float{
-$PrecioFinal = 0;
-$PrecioFinal=calcularDescuento($compo);
-return $PrecioFinal;
+function calcularTotal(array $compo):float
+{
+$basesiniva= calcularSubtotal($compo) + calcularCosteMontaje($compo) - calcularDescuento($compo);
+$iva=$basesiniva * 0.21;
+return $basesiniva + $iva;
 }
+
+$subtotal=calcularSubtotal($componentes);
+$costemontaje=calcularCosteMontaje($componentes);
+$descuento=calcularDescuento($componentes);
+$basesiniva= calcularSubtotal($componentes) + calcularCosteMontaje($componentes) - calcularDescuento($componentes);
+$iva=round($basesiniva * 0.21,2);
+$Totalfinal=round(calcularTotal($componentes),2);
+
+
+
+
 
 
 
@@ -74,9 +82,42 @@ Ninguna
     <title>Document</title>
 </head>
 <body>
+<div >
+<h2>Componentes de pc</h2>
 
+    <ul>
+        <?php foreach ($componentes as $c => $value): ?>
+            <li>
+                <?= htmlspecialchars($c, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?> : <?= $value ?> €
+            </li>
+        <?php endforeach; ?>
+    </ul>
 
+</div>
+<div>
+    <h3>Presupuesto Completo</h3>
+   <ul>
+       <li>
+           Subtotal:   <?= $subtotal ?> €
+       </li>
+       <li>
+            Coste de Montaje:   <?= $costemontaje?> €
+       </li>
+       <?php if ($descuento>0):?>
+           <li>
 
+                Descuento(5%): <?=$descuento?> €
+
+           </li>
+       <?php endif ?>
+       <li>
+        IVA(21%):   <?=$iva?> €
+       </li>
+       <li>
+        PrecioFinal:   <?=$Totalfinal?> €
+       </li>
+   </ul>
+</div>
 
 </body>
 </html>
