@@ -8,13 +8,14 @@
     color:white;
 }
 
-
-
-
-
-
-
 .error{
     color:white;
     background-color: red;
+}
+
+.button {
+    color:white;
+    background-color: blue;
+    text-decoration: none;
+
 }
