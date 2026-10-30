@@ -16,7 +16,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         "samesite" => "Lax",
     ]);
     }
-    $theme=$_COOKIE["theme"]??"light";
     if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
         $theme="light";
     }
