@@ -4,6 +4,7 @@
     if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
         $theme="light";
     }
+    $_SESSION['visitas'] = ($_SESSION['visitas'] ?? 0) + 1;
 ?>
 
 <!doctype html>
@@ -28,6 +29,7 @@
         </p>
     </section>
     <a class="button" href="preferences.php">Ir a preferencias</a>
+    <p>Nos han visitado:<?= $_SESSION['visitas']?>veces</p>
 </main>
 
 </body>
