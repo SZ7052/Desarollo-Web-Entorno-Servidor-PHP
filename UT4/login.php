@@ -13,13 +13,23 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
     $email=is_string($emailInput)?trim($emailInput):'';
     $password=is_string($passwordInput)?trim($passwordInput):'';
 
+    $error = 'El email y/o la contraseña son incorrectos.';
+
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $user=getUserByEmail($email);
+        if ($user != null && password_verify($password, $user['password']) ) {
+            login($user);
+            redirect('dashboard.php');
+        }
+    }
+
 
 }
 
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -31,6 +41,9 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
 </head>
 <body class="bg-<?=  e($theme)?>">
 <h1>Iniciar sesión</h1>
+<?php if (isset($error)): ?>
+<p class="error"><?=e($error)?></p>
+<?php endif ?>
 <form method="POST" action="">
     <label for="email" >Email</label>
     <input type="email" id="email" name="email" placeholder="Email">
