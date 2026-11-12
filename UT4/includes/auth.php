@@ -33,22 +33,3 @@ function currentUser():?array{
     return $_SESSION['user'];
 }
 
-/*
-//Saber si hay alguien autenticado
-
-function auten(Array $user):bool{
-    if(isset($_SESSION["user"])){
-        return true;
-    }
-    return false;
-}
-
-//Saber el usuario autenticado
-
-function whoauten(Array $user):?string{
-    if(isset($_SESSION["user"])){
-        $who=getUserByEmail($user);
-    }
-    return null;
-}
-*/

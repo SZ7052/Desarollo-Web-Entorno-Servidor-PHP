@@ -1,9 +1,14 @@
 <?php
 require_once __DIR__ . '/includes/bootstrap.php';
+$user = currentUser();
+if(!$user){
+    redirect("login.php");
+}
 $theme=$_COOKIE["theme"]??"light";
 if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
     $theme="light";
 }
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -18,8 +23,8 @@ if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
 </head>
 <body class="bg-<?=  e($theme)?>">
 <section>
-    <h1>Bienvenido al DashBoard</h1>
-
+    <h1>Bienvenido ,<?=e($user['name'])?></h1>
+    <p>Rol:<?=e($user['role'])?></p>
 </section>
 </body>
 </html>
