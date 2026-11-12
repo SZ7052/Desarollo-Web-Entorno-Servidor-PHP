@@ -20,6 +20,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $theme="light";
     }
 }
+$user=currentUser();
 
 ?>
 <!doctype html>
@@ -34,6 +35,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </head>
 <body class="bg-<?= e($theme) ?>">
+<?php meepleheader($user) ?>
     <main>
         <section>
             <h1>
@@ -52,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
                 <button type="submit">Guardar preferencias</button>
             </form>
         </section>
-        <a class="button" href="index.php">Ir a Home</a>
+
     </main>
 </body>
 </html>

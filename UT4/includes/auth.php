@@ -22,6 +22,7 @@ function login(Array $user):void{
         "email"=>$user["email"],
         "role"=>$user["role"]
     ];
+    $_SESSION["last_activity"] = time();
 }
 function isAuthenticated():bool{
     return isset($_SESSION['user']) && is_array($_SESSION['user']);
@@ -33,3 +34,17 @@ function currentUser():?array{
     return $_SESSION['user'];
 }
 
+function requireRole(string $role):void{
+    $user = currentUser();
+    if(!$user || $user["role"]!==$role){
+        http_response_code(403);
+        exit("403 - Acceso no autorizado");
+    }
+}
+
+
+function logout():void{
+    //unset($_SESSION['user']);
+
+    session_destroy();
+}

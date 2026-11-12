@@ -1,10 +1,8 @@
 <?php
     require_once __DIR__ . '/includes/bootstrap.php';
-    $theme=$_COOKIE["theme"]??"light";
-    if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
-        $theme="light";
-    }
-    $_SESSION['visitas'] = ($_SESSION['visitas'] ?? 0) + 1;
+
+    $user=currentUser();
+
 ?>
 
 <!doctype html>
@@ -18,7 +16,7 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="bg-<?= e($theme) ?>">
-
+<?php meepleheader($user) ?>
 <main>
     <section>
         <h1>
@@ -28,8 +26,7 @@
             Tienda para aficionados a los juegos de mesa
         </p>
     </section>
-    <a class="button" href="preferences.php">Ir a preferencias</a>
-    <p>Nos han visitado:<?= $_SESSION['visitas']?>veces</p>
+
 </main>
 
 </body>

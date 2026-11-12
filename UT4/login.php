@@ -1,10 +1,7 @@
 <?php
 
 require_once __DIR__ . '/includes/bootstrap.php';
-$theme=$_COOKIE["theme"]??"light";
-if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
-    $theme="light";
-}
+$user=currentUser();
 
 if($_SERVER["REQUEST_METHOD"]==="POST"){
     $emailInput=$_POST["email"]??'';
@@ -40,6 +37,7 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
 
 </head>
 <body class="bg-<?=  e($theme)?>">
+<?php meepleheader($user) ?>
 <h1>Iniciar sesión</h1>
 <?php if (isset($error)): ?>
 <p class="error"><?=e($error)?></p>
