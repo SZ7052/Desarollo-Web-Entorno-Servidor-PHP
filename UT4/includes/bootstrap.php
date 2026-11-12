@@ -2,6 +2,12 @@
 declare(strict_types=1);
 require_once __DIR__ .'/security.php';
 
+$theme=$_COOKIE["theme"]??"light";
+if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
+    $theme="light";
+}
+
+
 ini_set('session.use_strict_mode', 1);
 
 
@@ -20,3 +26,4 @@ session_start();
 
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/navigation.php';
+require_once __DIR__ . '/../views/header.php';
