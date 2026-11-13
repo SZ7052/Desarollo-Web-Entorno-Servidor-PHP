@@ -1,0 +1,12 @@
+{
+  "name": "Shuai/CentroEJ1",
+  "description": "Ejercicio1 de UT4",
+  "version": "0.1.0",
+  "type": "project",
+  "require": {
+    "php": "^8.4"
+  },
+  "scripts": {
+    "serve": "php -S localhost:8000"
+  }
+}
