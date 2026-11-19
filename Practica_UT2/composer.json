@@ -1,0 +1,14 @@
+{
+  "name": "vendor/practica_ut2",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "sz7052",
+      "email": "sz7052@educa.madrid.org"
+    }
+  ],
+  "require": {
+  }
+}

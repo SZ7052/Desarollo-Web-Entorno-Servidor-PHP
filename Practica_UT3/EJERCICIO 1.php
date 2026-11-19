@@ -91,21 +91,31 @@ He usado 3 : suma , media y totaljuegos .
 <body>
 
 
-<div class="grid-posts">
+<div >
     <?php foreach ($juegos as $juego) : ?>
 
-    <div class="tarjeta-post">
-        <h3><?=$juego['titulo']?></h3>
-        <p>Genero: <?=$juego['genero']?></p>
-        <p>Precio: <?=$juego['precio']?></p>
-        <p>Pegi: <?=$juego['pegi'] ?></p>
-        <p>Stock: <?=$juego['stock'] ?></p>
-        <?php if ($juego['precio'] > 40):?>
-                <p>«Premium»</p>
-        <?php else:?>
-                <p>«Estándar»</p>
-        <?php endif;?>
+    <div >
+        <table>
+        <tr>
+            <th><?=$juego['titulo']?></th>
+        <th>Genero: </th>
+        <th>Precio: </th>
+        <th>Pegi: </th>
+        <th>Stock: </th>
+        </tr>
+            <tr>
+                <td> <?php if ($juego['precio'] > 40):?>
+                        <p>«Premium»</p>
+                    <?php else:?>
+                        <p>«Estándar»</p>
+                    <?php endif;?></td>
+                <td><?=$juego['genero']?></td>
+                <td><?=$juego['precio']?></td>
+                <td><?=$juego['pegi'] ?></td>
+                <td><?=$juego['stock'] ?></td>
+            </tr>
 
+        </table>
     </div>
 
     <?php endforeach; ?>
