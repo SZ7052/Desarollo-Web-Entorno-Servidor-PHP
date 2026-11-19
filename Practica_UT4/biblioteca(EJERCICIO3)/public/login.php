@@ -36,6 +36,7 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
 
 </head>
 <body >
+<?php meepleheader($user) ?>
 <h1>Iniciar sesión</h1>
 <?php if (isset($error)): ?>
     <p class="error"><?=e($error)?></p>

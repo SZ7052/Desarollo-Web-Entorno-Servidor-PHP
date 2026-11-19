@@ -7,7 +7,7 @@
             <?php if(isset($user)&&$user['role']=='admin'){?>
                 <a href="admin.php">Admin</a>
             <?php }?>
-            <a href="logout.php">Logout</a>
+
         </nav>
     </header>
 <?php }?>

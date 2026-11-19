@@ -4,7 +4,7 @@ return[
         'id' => 1,
         'name' => 'John Doe',
         'email' => 'johndoe@meepleclub.com',
-        'password'=>'$2y$12$Oq.ccGF6mwIJJy48hMcdguo3sXQ/o/Jr2XUntrRUIA/EPwlD5E27e',
+        'password'=>'$2y$12$VKUWLBueCf7iCVCfiPnmsubrDOuO9TzjiO2/tt8qHmDoxVHH2xKnu',
         'role'=>'admin'
     ], //"Temporal123"
     [

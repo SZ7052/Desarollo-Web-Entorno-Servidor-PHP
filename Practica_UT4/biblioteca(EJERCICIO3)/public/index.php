@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../app/bootstrap.php';
 
 
-
+$user=currentUser();
 ?>
 
 <!doctype html>
@@ -16,7 +16,7 @@ require_once __DIR__ . '/../app/bootstrap.php';
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body >
-
+<?php meepleheader($user) ?>
 <main>
     <section>
         <h1>
