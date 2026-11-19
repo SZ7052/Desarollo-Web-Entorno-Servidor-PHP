@@ -21,10 +21,6 @@ if(!$user){
 <body >
 <section>
     <h1>Bienvenido, <?=e($user['name'])?></h1>
-    <p>Rol:<?=e($user['role'])?></p>
-    <?php if ($user['role'] === 'admin') {?>
-        <a href="admin.php"><button>Admin</button></a>
-    <?php } ?>
     <a href="logout.php"><button>Cerrar sesión</button></a>
 </section>
 </body>
