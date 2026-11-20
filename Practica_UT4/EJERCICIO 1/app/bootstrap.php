@@ -7,11 +7,13 @@ if(!is_string($theme)||!in_array($theme, ["light", "dark"])){
     $theme="light";
 }
 
-session_set_cookie_params([
-    'httponly' => true,
-    'secure' => requestIsHTTPS(),
-    'samesite' => 'Lax',
-    'path' => '/',
-    'lifetime' => 0,
-
+setcookie("theme", $theme, [
+    "expires" => time() + 30 * 24 * 60 * 60,
+    "path" => "/",
+    "secure" => requestIsHTTPS(),
+    "httponly" => true,
+    "samesite" => "Lax"
 ]);
+
+require_once __DIR__ . '/navigation.php';
+require_once __DIR__ . '/../views/header.php';

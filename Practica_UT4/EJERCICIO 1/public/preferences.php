@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </head>
 <body class="bg-<?= e($theme) ?>">
-
+<?php meepleheader() ?>
 <main>
     <section>
         <h1>
