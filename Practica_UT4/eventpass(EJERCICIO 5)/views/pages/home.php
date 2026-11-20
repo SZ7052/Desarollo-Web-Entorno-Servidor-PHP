@@ -1,4 +1,4 @@
-<section class="hero">
+<section >
     <p class="eyebrow">Proyecto incremental UT4</p>
     <h1>Bienvenido a MeepleClub</h1>
     <p>
