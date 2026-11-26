@@ -1,0 +1,18 @@
+EJERCICIO 1.A · DECISIONES DE ALMACENAMIENTO
+
+Preferencias del programa durante 14 días:
+Mecanismo: Cookies.
+Motivo y precaución: Se guardan en el navegador y se envían al servidor en cada petición. Son útiles para recordar preferencias no sensibles, pero el usuario puede modificarlas; hay que validar sus valores.
+
+Identidad de una cuenta entre peticiones:
+Mecanismo: Sesión PHP.
+Motivo y precaución: Los datos de la cuenta se guardan en el servidor; el navegador conserva el identificador de sesión. Hay que regenerar ese identificador al iniciar sesión y no guardar la contraseña ni su hash en la sesión.
+
+EJERCICIO 2.A · AUTENTICACIÓN
+
+Función utilizada para comprobar la contraseña: password_verify().
+¿Por qué se almacena un hash y no la contraseña en claro?
+El hash permite comprobar una contraseña sin guardar la original. Si los datos se exponen, no se revela directamente la contraseña del usuario.
+
+Mensaje común ante correo desconocido y contraseña errónea:
+Correo o contraseña incorrectos.

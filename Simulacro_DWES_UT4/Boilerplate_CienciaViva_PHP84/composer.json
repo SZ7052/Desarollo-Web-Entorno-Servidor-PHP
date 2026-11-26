@@ -1,0 +1,14 @@
+{
+  "name": "ies-infanta-elena/cienciaviva-simulacro",
+  "description": "Boilerplate procedural PHP para el simulacro práctico de UT4",
+  "type": "project",
+  "require": {
+    "php": "^8.4"
+  },
+  "scripts": {
+    "serve": "php -S localhost:8000 -t public"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
