@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../app/bootstrap.php';
 
-requireRole('admin');
+requireRole('organizer');
 
-render('admin', [
-    'title' => 'Administración',
+render('organizer', [
+    'title' => 'Panel de Organizer',
     'user' => currentUser(),
     'allUsers' => users(),
 ]);

@@ -16,13 +16,9 @@ $layoutUser = currentUser();
 </head>
 <body class="theme-<?= e($theme) ?>">
 <header class="site-header">
-    <div>
-        <a class="brand" href="index.php">MeepleClub</a>
-        <span class="subtitle">Proyecto guía UT4 · DWES</span>
-    </div>
+
     <nav>
         <a href="index.php">Inicio</a>
-        <a href="preferences.php">Preferencias</a>
         <?php if ($layoutUser === null): ?>
             <a href="login.php">Login</a>
         <?php else: ?>
@@ -30,6 +26,10 @@ $layoutUser = currentUser();
             <?php if ($layoutUser['role'] === 'admin'): ?>
                 <a href="admin.php">Admin</a>
             <?php endif; ?>
+            <?php if ($layoutUser['role'] === 'admin' || $layoutUser['role'] === 'agent'): ?>
+                <a href="tickets.php">Tickets</a>
+            <?php endif; ?>
+
         <?php endif; ?>
     </nav>
 </header>

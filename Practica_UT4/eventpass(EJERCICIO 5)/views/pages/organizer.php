@@ -1,9 +1,8 @@
 <section class="hero">
-    <p class="eyebrow">Zona autorizada: admin</p>
-    <h1>Administración</h1>
+    <p class="eyebrow">Zona autorizada: Organizer</p>
+    <h1>Panel de Organizer</h1>
     <p>
-        Acceso concedido a <?= e($user['name']) ?> porque el servidor ha
-        comprobado el rol almacenado en la sesión.
+        Acceso concedido a <?= e($user['name']) ?> 
     </p>
 </section>
 
@@ -29,8 +28,5 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-    <p class="technical-note">
-        El <code>password_hash</code> no se imprime. Mostrarlo no aporta nada a
-        la interfaz y expondría información innecesaria.
-    </p>
+
 </section>

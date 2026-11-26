@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-/** @return array<int, array{id:int,name:string,email:string,password_hash:string,role:string}> */
+
 function users(): array
 {
-    /** @var array<int, array{id:int,name:string,email:string,password_hash:string,role:string}> $users */
+
     $users = require APP_ROOT . '/data/users.php';
 
     return $users;
 }
 
-/** @return array{id:int,name:string,email:string,password_hash:string,role:string}|null */
+
 function findUserByEmail(array $users, string $email): ?array
 {
     foreach ($users as $user) {
@@ -28,14 +28,14 @@ function isAuthenticated(): bool
     return isset($_SESSION['user']) && is_array($_SESSION['user']);
 }
 
-/** @return array{id:int,name:string,email:string,role:string}|null */
+
 function currentUser(): ?array
 {
     if (!isAuthenticated()) {
         return null;
     }
 
-    /** @var array{id:int,name:string,email:string,role:string} $user */
+
     $user = $_SESSION['user'];
 
     return $user;
@@ -71,10 +71,7 @@ function requireRole(string $role): void
     }
 }
 
-/**
- * Guarda únicamente los datos mínimos necesarios para identificar al usuario.
- * El hash de contraseña no se copia a la sesión.
- */
+
 function loginUser(array $user): void
 {
     session_regenerate_id(true);
@@ -88,15 +85,12 @@ function loginUser(array $user): void
 
     $_SESSION['last_activity'] = time();
 
-    // Renovamos el token CSRF al elevar el contexto a usuario autenticado.
+
     unset($_SESSION['csrf']);
     csrfToken();
 }
 
-/**
- * Elimina datos de sesión, destruye el almacenamiento servidor y expira
- * la cookie que transporta el identificador de sesión.
- */
+
 function logoutUser(): void
 {
     $_SESSION = [];
@@ -121,7 +115,7 @@ function logoutUser(): void
     session_destroy();
 }
 
-/** Aplica expiración por inactividad únicamente a usuarios autenticados. */
+
 function enforceSessionTimeout(int $timeout): void
 {
     if (!isAuthenticated()) {

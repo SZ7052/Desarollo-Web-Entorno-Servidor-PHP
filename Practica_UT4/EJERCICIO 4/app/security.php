@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/** Escapa un valor para insertarlo de forma segura en HTML. */
+
 function e(string $value): string
 {
     return htmlspecialchars(
@@ -12,7 +12,7 @@ function e(string $value): string
     );
 }
 
-/** Devuelve (y crea si es necesario) el token CSRF de la sesión actual. */
+
 function csrfToken(): string
 {
     if (!isset($_SESSION['csrf']) || !is_string($_SESSION['csrf'])) {
@@ -22,7 +22,7 @@ function csrfToken(): string
     return $_SESSION['csrf'];
 }
 
-/** Compara de forma segura el token recibido con el almacenado en sesión. */
+
 function verifyCsrf(string $token): bool
 {
     return isset($_SESSION['csrf'])
@@ -30,7 +30,7 @@ function verifyCsrf(string $token): bool
         && hash_equals($_SESSION['csrf'], $token);
 }
 
-/** Detiene la petición cuando el token CSRF recibido no es válido. */
+
 function requireValidCsrf(): void
 {
     $token = $_POST['csrf'] ?? '';
@@ -41,7 +41,7 @@ function requireValidCsrf(): void
     }
 }
 
-/** Detecta HTTPS de forma suficiente para esta práctica local. */
+
 function requestIsHttps(): bool
 {
     return !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';

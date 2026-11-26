@@ -4,10 +4,7 @@
         <nav>
             <a href="index.php">Home</a>
             <a href="login.php">Login</a>
-            <?php if(isset($user)&&$user['role']=='admin'){?>
-                <a href="admin.php">Admin</a>
-            <?php }?>
-
+            <a href="dashboard.php">Dashboard</a>
         </nav>
     </header>
 <?php }?>

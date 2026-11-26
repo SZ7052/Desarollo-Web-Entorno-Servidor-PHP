@@ -1,19 +1,22 @@
 <?php
 
-session_start();
-
-function usuarioEstaLogueado(): bool
+function enforceSessionTimeout(int $timeout): void
 {
-    return isset($_SESSION['usuario_id']);
-}
+    if (!isAuthenticated()) {
+        return;
+    }
 
-function usuarioId(): ?int
-{
-    return $_SESSION['usuario_id'] ?? null;
-}
+    $now = time();
+    $lastActivity = $_SESSION['last_activity'] ?? $now;
 
-function cerrarSesion(): void
-{
-    $_SESSION = [];
-    session_destroy();
+    if (!is_int($lastActivity)) {
+        $lastActivity = $now;
+    }
+
+    if (($now - $lastActivity) > $timeout) {
+        logoutUser();
+        redirect('login.php?expired=1');
+    }
+
+    $_SESSION['last_activity'] = $now;
 }

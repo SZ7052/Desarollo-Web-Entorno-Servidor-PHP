@@ -34,7 +34,7 @@
         <button type="submit">Entrar</button>
     </form>
 
-    <details class="technical-note">
+    <details >
         <summary>Credenciales de desarrollo</summary>
         <p><code>ada@meeple.local</code> / <code>Admin123!</code></p>
         <p><code>linus@meeple.local</code> / <code>User123!</code></p>

@@ -2,12 +2,7 @@
 
 declare(strict_types=1);
 
-/**
- * Datos de desarrollo para la UT4.
- *
- * En una aplicación real estos usuarios se recuperarían de una base de datos.
- * Nunca almacenamos aquí las contraseñas en texto plano.
- */
+
 return [
     [
         'id' => 1,

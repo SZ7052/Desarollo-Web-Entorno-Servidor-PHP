@@ -2,19 +2,19 @@
 require_once __DIR__ . '/../app/bootstrap.php';
 $allowedTheme=['light', 'dark'];
 $idiomas=['es', 'en'];
-$elementos=[10,20,30];
+$elementos=['10','20','50'];
 
 $errores=[];
 
 $theme=$_COOKIE["theme"]??"light";
 $idioma=$_COOKIE["idioma"]??"es";
-$elemento=$_COOKIE["elementos"]??10;
+$elemento=$_COOKIE["numero_elementos"]??"10";
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $theme=$_POST["theme"]??'';
     $idioma=$_POST["idioma"]??"";
-    $elemento=$_POST["elementos"]??"";
+    $elemento=$_POST["numero_elementos"]??"";
     if(!in_array($theme, $allowedTheme)) {
         $error= 'El tema elegido no es valido';
     }else{
@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     if(!in_array($elemento, $elementos)){
         $error= 'El numero de elementos no es valido';
     }else{
-        setcookie("elemento", $elemento,[
+        setcookie("numero_elementos", $elemento,[
             "expires" => time()+(86400*30),
             "path" => "/",
             "secure" => requestIsHTTPS(),
@@ -96,9 +96,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
             </select>
             <label for="numero_elementos">Número de elementos</label>
             <select name="numero_elementos" id="numero_elementos">
-                <option value=10>10</option>
-                <option value=20>20</option>
-                <option value=50>50</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
             </select>
             <button type="submit">Guardar preferencias</button>
         </form>

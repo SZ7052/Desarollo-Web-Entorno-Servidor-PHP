@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-/**
- * Renderiza una vista de views/pages dentro del layout común.
- *
- * @param array<string, mixed> $data
- */
+
 function render(string $view, array $data = []): void
 {
     $viewFile = APP_ROOT . '/views/pages/' . $view . '.php';
@@ -34,3 +30,14 @@ function validatedTheme(): string
     return $theme;
 }
 
+function validatedSize(): string
+{
+    $allowedSizes = ['normal', 'compact'];
+    $size = $_COOKIE['size'] ?? 'normal';
+
+    if (!is_string($size) || !in_array($size, $allowedSizes, true)) {
+        return 'normal';
+    }
+
+    return $size;
+}

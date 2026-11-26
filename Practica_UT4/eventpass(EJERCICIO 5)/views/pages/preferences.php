@@ -1,9 +1,12 @@
 <section class="card narrow">
     <h1>Preferencias</h1>
-    <p>La selección se almacena en una cookie del navegador durante 30 días.</p>
 
     <?php if ($saved): ?>
         <p class="success">Preferencia guardada correctamente.</p>
+    <?php endif; ?>
+
+    <?php if ($reset): ?>
+        <p class="success">Preferencias restablecidas.</p>
     <?php endif; ?>
 
     <?php if ($error !== null): ?>
@@ -19,11 +22,13 @@
             <option value="dark" <?= $currentTheme === 'dark' ? 'selected' : '' ?>>Oscuro</option>
         </select>
 
-        <button type="submit">Guardar preferencia</button>
-    </form>
+        <label for="size">Tamaño de interfaz</label>
+        <select id="size" name="size">
+            <option value="normal" <?= $currentSize === 'normal' ? 'selected' : '' ?>>Normal</option>
+            <option value="compact" <?= $currentSize === 'compact' ? 'selected' : '' ?>>Compacto</option>
+        </select>
 
-    <div class="technical-note">
-        <strong>Prueba:</strong> modifica manualmente la cookie <code>theme</code>
-        desde DevTools. El servidor volverá al valor seguro <code>light</code>.
-    </div>
+        <button type="submit">Guardar preferencia</button>
+        <button type="submit" name="reset" value="1">Restablecer preferencias</button>
+    </form>
 </section>

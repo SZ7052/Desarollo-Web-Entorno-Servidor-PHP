@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 const APP_ROOT = __DIR__ . '/..';
 
-/** @var array<string, mixed> $GLOBALS['app_config'] */
+
 $GLOBALS['app_config'] = require APP_ROOT . '/config/app.php';
 
-/**
- * Lee configuración usando claves con punto, por ejemplo: session.idle_timeout.
- */
+
 function config(string $key): mixed
 {
     $value = $GLOBALS['app_config'];
@@ -29,7 +27,7 @@ require_once APP_ROOT . '/app/security.php';
 
 $isHttps = requestIsHttps();
 
-// Rechaza IDs de sesión que no hayan sido inicializados previamente por PHP.
+
 ini_set('session.use_strict_mode', '1');
 
 $sessionCookie = config('session.cookie');

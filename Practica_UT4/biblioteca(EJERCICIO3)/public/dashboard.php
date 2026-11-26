@@ -19,6 +19,7 @@ if(!$user){
 
 </head>
 <body >
+<?php meepleheader($user) ?>
 <section>
     <h1>Bienvenido, <?=e($user['name'])?></h1>
     <a href="logout.php"><button>Cerrar sesión</button></a>

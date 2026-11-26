@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 $pageTitle = isset($title) && is_string($title) ? $title : 'MeepleClub';
 $theme = validatedTheme();
+$size = validatedsize();
 $layoutUser = currentUser();
 ?>
 <!DOCTYPE html>
@@ -14,11 +15,10 @@ $layoutUser = currentUser();
     <title><?= e($pageTitle) ?> · MeepleClub</title>
     <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="theme-<?= e($theme) ?>">
+<body class="theme-<?= e($theme) ?> size-<?= e($size) ?>">
 <header class="site-header">
     <div>
-        <a class="brand" href="index.php">MeepleClub</a>
-        <span class="subtitle">Proyecto guía UT4 · DWES</span>
+        <a class="brand" href="index.php">Ejercicio 5</a>
     </div>
     <nav>
         <a href="index.php">Inicio</a>
@@ -27,8 +27,9 @@ $layoutUser = currentUser();
             <a href="login.php">Login</a>
         <?php else: ?>
             <a href="dashboard.php">Dashboard</a>
-            <?php if ($layoutUser['role'] === 'admin'): ?>
-                <a href="admin.php">Admin</a>
+            <a href="attendee.php">Zona attendees</a>
+            <?php if ($layoutUser['role'] === 'organizer'): ?>
+                <a href="organizer.php">Organizer</a>
             <?php endif; ?>
         <?php endif; ?>
     </nav>
